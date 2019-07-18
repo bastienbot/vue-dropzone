@@ -71,9 +71,9 @@ export default {
             // Purposefully leaving this in as it's part of the original code and I figure I can come back and adjust this later
             var s3BodyResponse = (new window.DOMParser()).parseFromString(request.response, "text/xml")
             var successMsg = s3BodyResponse.firstChild.children[0].innerHTML;
-              resolve({
+            resolve({
               'success': true,
-              'message': successMsg
+              'message': {'presign': response}
             })
           }
         }
