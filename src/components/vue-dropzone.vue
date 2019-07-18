@@ -363,9 +363,10 @@ export default {
       var promise = awsEndpoint.sendFile(file, this.awss3, this.isS3OverridesServerPropagation);
         if (!this.isS3OverridesServerPropagation) {
           promise.then((response) => {
+            response.message = 'Done!';
             if (response.success) {
               file.s3ObjectLocation = response.message
-              setTimeout(() => this.dropzone.processFile(file))
+              // setTimeout(() => this.dropzone.processFile(file))
               this.$emit('vdropzone-s3-upload-success', response.message);
             } else {
               if ('undefined' !== typeof response.message) {
